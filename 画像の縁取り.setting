@@ -1,0 +1,123 @@
+{
+	Tools = ordered() {
+		["画像の縁取り1"] = GroupOperator {
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Merge1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Merge1 = Merge {
+					CtrlWShown = false,
+					Inputs = {
+						Background = Input {
+							SourceOp = "Background1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "MediaIn1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, }
+					},
+					ViewInfo = OperatorInfo { Pos = { 874.667, 111 } },
+				},
+				Background1 = Background {
+					CtrlWShown = false,
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "ErodeDilate1",
+							Source = "Output",
+						},
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftRed = Input { Value = 1, },
+						TopLeftGreen = Input { Value = 1, },
+						TopLeftBlue = Input { Value = 1, }
+					},
+					ViewInfo = OperatorInfo { Pos = { 744, 112.212 } },
+				},
+				ErodeDilate1 = ErodeDilate {
+					CtrlWShown = false,
+					Inputs = {
+						XAmount = Input { Value = 0.0056, },
+						Input = Input {
+							SourceOp = "MediaIn1",
+							Source = "Output",
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 746.667, 71.606 } },
+				},
+				MediaIn1 = MediaIn {
+					ExtentSet = true,
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					CustomData = {
+						MediaProps = {
+							MEDIA_AUDIO_TRACKS_NUM = 1,
+							MEDIA_MARK_OUT = 92,
+							MEDIA_AUDIO_TRACKS_DESC = {
+								{
+									MEDIA_AUDIO_BIT_DEPTH = 32,
+									MEDIA_AUDIO_TRACK_ID = "Timeline Audio",
+									MEDIA_AUDIO_TRACK_NAME = "Timeline Audio [Timeline 1]",
+									MEDIA_AUDIO_START_TIME = 0,
+									MEDIA_AUDIO_FRAME_RATE = 23.976023976024,
+									MEDIA_AUDIO_SAMPLE_RATE = 48000,
+									MEDIA_AUDIO_NUM_CHANNELS = 2
+								}
+							},
+							MEDIA_MARK_IN = 0,
+							MEDIA_NUM_LAYERS = 0,
+							MEDIA_FORMAT_TYPE = "PNG",
+							MEDIA_LAYER_DESC = {
+							},
+							MEDIA_NAME = "Rebel1100-9-30%.png",
+							MEDIA_HEIGHT = 809,
+							MEDIA_WIDTH = 1000,
+							MEDIA_START_FRAME = 0,
+							MEDIA_SRC_FRAME_RATE = 30,
+							MEDIA_PATH = "Z:\\いらすと\\Rebel1100-9-30%.png",
+							MEDIA_HAS_AUDIO = true,
+							MEDIA_NUM_FRAMES = 93,
+							MEDIA_PAR = 1,
+							MEDIA_IS_SOURCE_RES = true
+						},
+					},
+					Inputs = {
+						GlobalOut = Input { Value = 92, },
+						AudioTrack = Input { Value = FuID { "Timeline Audio" }, },
+						Layer = Input { Value = "0", },
+						ClipTimeEnd = Input { Value = 92, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						DeepOutputMode = Input {
+							Value = 0,
+							Disabled = true,
+						},
+						LeftAudio = Input {
+							SourceOp = "Left",
+							Source = "Data",
+						},
+						RightAudio = Input {
+							SourceOp = "Right",
+							Source = "Data",
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 748.333, 10.0606 } },
+					Version = 1
+				},
+				Left = AudioDisplay {
+					CtrlWZoom = false,
+				},
+				Right = AudioDisplay {
+					CtrlWZoom = false,
+				}
+			},
+		}
+	},
+	ActiveTool = "画像の縁取り1"
+}
